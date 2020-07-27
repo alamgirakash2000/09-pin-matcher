@@ -11,12 +11,16 @@ function generatePin(){
     document.getElementById("notMatchedMessage").className='notify d-none'
     document.getElementById("matchedMessage").className ='notify d-none'
     document.getElementById("left-tries").innerText=`${leftTries} try left`
+    blockInput()
 }
 
 // Show and set the guessed pin
 function getSetPin(e){
     if((e.target.classList.contains('button')) && !(e.target.classList.contains('extra'))){
-        displayGuessed.value+=e.target.innerText
+        if(displayGuessed.value.length<4){
+            displayGuessed.value+=e.target.innerText
+            blockInput()
+        }
     }
 }
 
@@ -38,5 +42,20 @@ function submitFunction(){
             submitBtn.setAttribute('disabled', true)
         }
         document.getElementById("left-tries").innerText=`${leftTries} try left`
+    }
+}
+
+// Blocking the inputs after crossing the limit
+function blockInput(){
+    if(displayGuessed.value.length>=4){
+        displayGuessed.setAttribute('disabled', true) 
+    }else{
+        displayGuessed.removeAttribute('disabled')
+    }
+    
+    if(displayGenerated.value.length>=4){
+        displayGenerated.setAttribute('disabled', true) 
+    }else{
+        displayGenerated.removeAttribute('disabled')
     }
 }

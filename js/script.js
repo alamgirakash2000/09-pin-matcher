@@ -20,13 +20,19 @@ buttons.addEventListener('click',getSetPin)
 
 // Clear button
 clearBtn.addEventListener('click',()=>{
-      displayGuessed.value=''   
+      displayGuessed.value='' 
+      blockInput()  
 })
 
-//Backspace button button
+//Backspace button
 backspace.addEventListener('click',()=>{
     displayGuessed.value=displayGuessed.value.slice(0,-1)
+    blockInput()
 })
 
 // Functionality of submit button
 submitBtn.addEventListener('click', submitFunction)
+
+// Blocking the inputs after crossing the limit
+displayGuessed.addEventListener('input', blockInput)
+displayGenerated.addEventListener('input', blockInput)
