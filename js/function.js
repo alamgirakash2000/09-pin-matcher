@@ -1,7 +1,7 @@
 'use strict'
 
 // To generate and show the pin
-// When the pin will generate,  all the functionalities will be inutialized.
+// When the pin will generate,  all the functionalities will be initialized.
 function generatePin(){
     var pin=1000+ Math.floor(Math.random()*9000)
     displayGenerated.value= pin
